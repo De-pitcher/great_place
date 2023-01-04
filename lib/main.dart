@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 
 import './screens/add_place_screen.dart';
 import './screens/places_list_screen.dart';
+import './screens/place_detail_screen.dart';
 import './providers/great_place.dart';
 
 void main() => runApp(const MyApp());
@@ -17,12 +18,13 @@ class MyApp extends StatelessWidget {
         title: 'Great Placees',
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
-          primarySwatch: Colors.indigo,
-          accentColor: Colors.amber,
+          colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.indigo)
+              .copyWith(secondary: Colors.amber),
         ),
         home: const PlacesListScreen(),
         routes: {
-          AddPlaceScreen.routeName: (_) => AddPlaceScreen(),
+          AddPlaceScreen.routeName: (_) => const AddPlaceScreen(),
+          PlaceDetailScreen.routeName: (_) => const PlaceDetailScreen(),
         },
       ),
     );

@@ -7,13 +7,18 @@ const userPlaceTable = 'user_places';
 const userId = 'id';
 const userTitle = 'title';
 const userPlaceImage = 'image';
+const placeLocLat = 'loc_lat';
+const placeLocLong = 'loc_long';
+const placeAddress = 'address';
 
 class DBHelper {
   static Future<Database> database() async {
     final dbPath = await sql.getDatabasesPath();
     return sql.openDatabase(path.join(dbPath, userDB), onCreate: (db, version) {
       return db.execute(
-        'CREATE TABLE $userPlaceTable ($userId TEXT PRIMARY KEY, $userTitle TEXT, $userPlaceImage TEXT)',
+        'CREATE TABLE $userPlaceTable ($userId TEXT PRIMARY KEY, $userTitle '
+        'TEXT, $userPlaceImage TEXT, $placeLocLat REAL, $placeLocLong REAL, '
+        '$placeAddress TEXT)',
       );
     }, version: 1);
   }
